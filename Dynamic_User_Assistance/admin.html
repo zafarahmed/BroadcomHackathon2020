@@ -7,8 +7,7 @@
     
         <script src="https://use.fontawesome.com/b702a4904b.js"></script>
      <script src="app.js"></script>
-    <script src="clientRenderer.js"></script>
-    <script>
+    <!-- <script>
        $(function () {
   $('[data-toggle="tooltip"]').tooltip();
   $('#defaultPop').tooltip('show') ;
@@ -18,29 +17,14 @@ $(function () {
   $('#test1').popover('show') .off('click');
 })
 
-  $('.youtubeVideo').on('hidden.bs.modal', function() {
-                var $this = $(this).find('iframe'),
-                  tempSrc = $this.attr('src');
-                $this.attr('src', "");
-                $this.attr('src', tempSrc);
-              });
 
-    </script>
+
+    </script> -->
 
     <body ng-app='dynamicUserAssist'>
-      <div class="container pt-">
-        <a class="btn btn-primary float-right" href="admin.html" role="button">Go To Admin</a>
-        <span  id="2"> Test</span>
-        <input  id="1" type="text" value="your input here" onclick="alert('Hello')"/>
-        <button  id="3"type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-              Launch static backdrop modal
-        </button>
-        <span id='test1' class="d-inline-block" data-toggle="popover" data-content="Disabled popover">
-          <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Disabled button</button>
-        </span>
+      <div class="container pt-3">
+          <a class="btn btn-warning float-left" href="index.html" role="button">Go To End User</a>
       </div>
-
-      
-      
-      </body>   
+         
+    </body>   
 </html>
