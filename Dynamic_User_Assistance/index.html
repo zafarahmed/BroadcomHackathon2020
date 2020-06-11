@@ -1,5 +1,11 @@
 <html>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        
+         
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
@@ -10,27 +16,79 @@
 
      <script src="app.js"></script>
      <script src="commonService.js"></script>
+
     <script src="clientRenderer.js"></script>
-    <script>
-       $(function () {
-  $('[data-toggle="tooltip"]').tooltip();
-  $('#defaultPop').tooltip('show') ;
-})
-$(function () {
-  $('[data-toggle="popover"]').popover();
-  $('#test1').popover('show') .off('click');
-})
+    <script src="adminRendererCtrl.js"></script>
 
-  $('.youtubeVideo').on('hidden.bs.modal', function() {
-                var $this = $(this).find('iframe'),
-                  tempSrc = $this.attr('src');
-                $this.attr('src', "");
-                $this.attr('src', tempSrc);
-              });
-
-    </script>
     <style>
-    .form-control-borderless {
+        .widget-button {
+     
+      border: none;
+      cursor: pointer;
+      opacity: 0.8;
+      position: fixed;
+      bottom: 23px;
+      right: 38px;
+      width: 280px;
+    }
+    
+    /* The popup chat - hidden by default */
+    .chat-popup {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      right: 15px;
+      border: 3px solid #f1f1f1;
+      z-index: 9;
+    }
+    
+    /* Add styles to the form container */
+    .form-container {
+      max-width: 300px;
+      padding: 10px;
+      background-color: white;
+    }
+    
+    /* Full-width textarea */
+    .form-container textarea {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      border: none;
+      background: #f1f1f1;
+      resize: none;
+      min-height: 200px;
+    }
+    
+    /* When the textarea gets focus, do something */
+    .form-container textarea:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+    
+    /* Set a style for the submit/send button */
+    .form-container .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 16px 20px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      margin-bottom:10px;
+      opacity: 0.8;
+    }
+    
+    /* Add a red background color to the cancel button */
+    .form-container .cancel {
+      background-color: red;
+    }
+    
+    /* Add some hover effects to buttons */
+    .form-container .btn:hover, .widget-button:hover {
+      opacity: 1;
+    }
+
+        .form-control-borderless {
     border: none;
 }
 
@@ -39,41 +97,14 @@ $(function () {
     outline: none;
     box-shadow: none;
 }
-    </style>
+        
+        </style>
 
-    <body ng-app='dynamicUserAssist' ng-controller="clientRenderCtrl">
-      <div class="container-fluid pt-3">
-          <a class="btn btn-primary float-right" href="admin.html" role="button">Go To Admin</a>
-          <div class="container mt-3 pt-3">
-            
+    <body ng-app='dynamicUserAssist' >
+        <a class="btn btn-warning" href="/user" role="button">Go To End User</a>
+        <a class="btn btn-primary " href="/admin" role="button">Go To Admin</a>
 
-            	<div class="row justify-content-center">
-                  <div class="col-12 col-md-10 col-lg-8">
-                      <form class="form-inline card card-sm">
-                          <div class="card-body row no-gutters align-items-center">
-                              
-                              <!--end of col-->
-                              <div class="col">
-                                  <input id="1" class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords">
-                              </div>
-                              <!--end of col-->
-                              <div class="col-auto">
-                                  <button class="btn btn-lg btn-success" type="submit">Search</button>
-                              </div>
-                              <!--end of col-->
-                          </div>
-                      </form>
-                  </div>
-                  <!--end of col-->
-              </div>
-
-
-         
-            </div>
-      
-      </div>
-
-      
+      <div ng-view></div>
       
       
       </body>   

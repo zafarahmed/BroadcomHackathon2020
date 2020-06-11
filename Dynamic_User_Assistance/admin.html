@@ -1,40 +1,90 @@
+<head>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<style>
+  .widget-button {
 
+border: none;
+cursor: pointer;
+opacity: 0.8;
+position: fixed;
+bottom: 23px;
+right: 38px;
+width: 280px;
+}
 
-<html>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+/* The popup chat - hidden by default */
+.chat-popup {
+display: none;
+position: fixed;
+bottom: 0;
+right: 15px;
+border: 3px solid #f1f1f1;
+z-index: 9;
+}
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+/* Add styles to the form container */
+.form-container {
+max-width: 300px;
+padding: 10px;
+background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+width: 100%;
+padding: 15px;
+margin: 5px 0 22px 0;
+border: none;
+background: #f1f1f1;
+resize: none;
+min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+background-color: #ddd;
+outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+background-color: #4CAF50;
+color: white;
+padding: 16px 20px;
+border: none;
+cursor: pointer;
+width: 100%;
+margin-bottom:10px;
+opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .widget-button:hover {
+opacity: 1;
+}
+
+  .form-control-borderless {
+border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+border: none;
+outline: none;
+box-shadow: none;
+}
+  
+  </style>
+
     
-        <script src="https://use.fontawesome.com/b702a4904b.js"></script>
-     <script src="app.js"></script>
-     <script src="commonService.js"></script>
-    <script src="adminRendererCtrl.js"></script>
     <script>
-       $(function () {
-  $('[data-toggle="tooltip"]').tooltip();
-  $('#defaultPop').tooltip('show') ;
-  $('.toast').toast({autohide:true,delay:2000,animation:true});
-  
-})
-$(function () {
-  
- 
- 
-	
-$('#dcc1').popover({placement:"top",html: true, 
-	sanitize: false});
-	
-	//$('#dcc1').popover('show');
-	
-	//$('#dcc').popover({placement:"top",html: true, 
-	//content: function () {
-   //     var content = $(this).attr("data-popover-content");
-   //     return $(content).find(".popover-body").clone();
-   // }});
 
-})
 function openForm() {
   document.getElementById("myForm").style.display = "block";
 }
@@ -45,79 +95,11 @@ function closeForm() {
 
 
     </script>
-    <style>
-    .widget-button {
  
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  position: fixed;
-  bottom: 23px;
-  right: 38px;
-  width: 280px;
-}
-
-/* The popup chat - hidden by default */
-.chat-popup {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  right: 15px;
-  border: 3px solid #f1f1f1;
-  z-index: 9;
-}
-
-/* Add styles to the form container */
-.form-container {
-  max-width: 300px;
-  padding: 10px;
-  background-color: white;
-}
-
-/* Full-width textarea */
-.form-container textarea {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-  resize: none;
-  min-height: 200px;
-}
-
-/* When the textarea gets focus, do something */
-.form-container textarea:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-/* Set a style for the submit/send button */
-.form-container .btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
-}
-
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-  background-color: red;
-}
-
-/* Add some hover effects to buttons */
-.form-container .btn:hover, .widget-button:hover {
-  opacity: 1;
-}
-    
-    </style>
 
     <body ng-app='dynamicUserAssist' ng-controller="adminRenderCtrl" >
         <div class="container-fluid pt-3">
-                <a class="btn btn-warning float-right" href="index.html" role="button">Go To End User</a>
+                <a class="btn btn-warning float-right" href="/user" role="button">Go To End User</a>
                 <div class="container mt-3 pt-3">
                    
                         <div class="row justify-content-center">
@@ -191,7 +173,3 @@ function closeForm() {
                   </div> 
 			
 			<!--Dynamic Content Controller -->
-						
-    </body>   
-
-</html>
