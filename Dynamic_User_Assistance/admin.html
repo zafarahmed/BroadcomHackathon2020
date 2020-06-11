@@ -1,105 +1,9 @@
-<head>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
-<style>
-  .widget-button {
 
-border: none;
-cursor: pointer;
-opacity: 0.8;
-position: fixed;
-bottom: 23px;
-right: 38px;
-width: 280px;
-}
-
-/* The popup chat - hidden by default */
-.chat-popup {
-display: none;
-position: fixed;
-bottom: 0;
-right: 15px;
-border: 3px solid #f1f1f1;
-z-index: 9;
-}
-
-/* Add styles to the form container */
-.form-container {
-max-width: 300px;
-padding: 10px;
-background-color: white;
-}
-
-/* Full-width textarea */
-.form-container textarea {
-width: 100%;
-padding: 15px;
-margin: 5px 0 22px 0;
-border: none;
-background: #f1f1f1;
-resize: none;
-min-height: 200px;
-}
-
-/* When the textarea gets focus, do something */
-.form-container textarea:focus {
-background-color: #ddd;
-outline: none;
-}
-
-/* Set a style for the submit/send button */
-.form-container .btn {
-background-color: #4CAF50;
-color: white;
-padding: 16px 20px;
-border: none;
-cursor: pointer;
-width: 100%;
-margin-bottom:10px;
-opacity: 0.8;
-}
-
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-background-color: red;
-}
-
-/* Add some hover effects to buttons */
-.form-container .btn:hover, .widget-button:hover {
-opacity: 1;
-}
-
-  .form-control-borderless {
-border: none;
-}
-
-.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
-border: none;
-outline: none;
-box-shadow: none;
-}
-  
-  </style>
-
-    
-    <script>
-
-function openForm() {
-  document.getElementById("myForm").style.display = "block";
-}
-
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
-} 
-
-
-    </script>
  
 
     <body ng-app='dynamicUserAssist' ng-controller="adminRenderCtrl" >
         <div class="container-fluid pt-3">
-                <a class="btn btn-warning float-right" href="/user" role="button">Go To End User</a>
+                <a class="btn btn-warning float-right" ui-sref="user" role="button">Go To End User</a>
                 <div class="container mt-3 pt-3">
                    
                         <div class="row justify-content-center">
@@ -113,7 +17,7 @@ function closeForm() {
                                             </div>
                                             <!--end of col-->
                                             <div class="col-auto">
-                                                <button class="btn btn-lg btn-success" type="submit">Search</button>
+                                                <button class="btn btn-lg btn-success" type="button">Search</button>
                                             </div>
                                             <!--end of col-->
                                         </div>
@@ -144,10 +48,10 @@ function closeForm() {
 			
 		
             
-            <i class="fa fa-cogs fa-2x widget-button" onclick="openForm()"></i>
+            <i class="fa fa-cogs fa-2x widget-button" ng-click="openForm()"></i>
             <div class="chat-popup" id="myForm">
                     <form class="form-container">
-                      <h5> Dynamic Content Controller &nbsp;<i class="fa fa-times widget-button" onclick="closeForm()"></i></h5>
+                      <h5> Dynamic Content Controller &nbsp;<i class="fa fa-times" ng-click="closeForm()"></i></h5>
                   
                       <div class='form-group row'>
                           <label for='staticEmail' class='col-sm-5 col-form-label'>Content Id</label>
@@ -168,7 +72,7 @@ function closeForm() {
                             <textarea class='form-control' id='contentVal' rows='3'></textarea> 
                            </div>
                   
-                      <button type="submit" class="btn btn-success" ng-click="contentDataController()">submit</button>
+                      <button type="button" class="btn btn-success" ng-click="contentDataController()">submit</button>
                     </form>
                   </div> 
 			

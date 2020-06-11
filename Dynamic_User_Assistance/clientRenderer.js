@@ -1,6 +1,30 @@
 
 
 app.controller("clientRenderCtrl", function( $scope, commonService){
+
+  var videoIcon='<span id="defaultPop" class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip"><i class="fa fa-video-camera" aria-hidden="true" data-toggle="modal" data-target="#{{ID}}" /></span>'
+var videoTemplate = '<div class="modal fade" id="{{ID}}" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">'
++'<div class="modal-dialog">'
+  +'<div class="modal-content">'
+  +'<div class="modal-header">'
+  +'<h5 class="modal-title" id="staticBackdropLabel">{{TITLE}}</h5>'
+  +'<button type="button" class="close" data-dismiss="modal" aria-label="Close">'
+  +' <span aria-hidden="true">&times;</span>'
+  +'</button>'
+  +'</div>'
+  +'<div class="modal-body">'
+  +'<iframe width="100%" src="{{URL}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+
+  +'</div>'
+  +'<div class="modal-footer">'
+  +'<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>'
+  +'<button type="button" class="btn btn-primary">Understood</button>'
+  +'</div>'
+  +'</div>'
+  +'</div>'
+  +'</div>'
+
+  console.log("User Controller");
     var contentArr = commonService.getContent();
 
     for(var i = 0; i<contentArr.length; i++){

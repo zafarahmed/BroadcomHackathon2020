@@ -1,14 +1,15 @@
-var app = angular.module('dynamicUserAssist', ["ngRoute"]);
-app.config(function( $routeProvider ){
-$routeProvider
-.when('/user',{
+var app = angular.module('dynamicUserAssist', ['ui.router']);
+app.config(function( $stateProvider, $urlRouterProvider ){
+    $urlRouterProvider.otherwise('/');
+    $stateProvider
+.state('user',{
+    url: '/user',
     templateUrl:'user.html',
     controller:'clientRenderCtrl'
 })
-.when('/admin', {
+.state('admin', {
+    url: '/admin',
     templateUrl: 'admin.html',
     controller:'adminRenderCtrl'
 });
-$locationProvider
-  .html5Mode(true);
 });

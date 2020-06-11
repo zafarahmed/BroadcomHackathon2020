@@ -15,6 +15,13 @@ app.controller('adminRenderCtrl', function( $scope, commonService ){
        }
     }
 
+	$scope.openForm=function() {
+		document.getElementById("myForm").style.display = "block";
+	  }
+	  
+	  $scope.closeForm=function() {
+		document.getElementById("myForm").style.display = "none";
+	  } 
 	
 	//$("#formSubmit").on('click',function(e){
        $scope.contentDataController=function(){
