@@ -6,7 +6,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     
         <script src="https://use.fontawesome.com/b702a4904b.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
      <script src="app.js"></script>
+     <script src="commonService.js"></script>
     <script src="clientRenderer.js"></script>
     <script>
        $(function () {
@@ -26,20 +29,51 @@ $(function () {
               });
 
     </script>
+    <style>
+    .form-control-borderless {
+    border: none;
+}
 
-    <body ng-app='dynamicUserAssist'>
-      <div class="container pt-">
-        <a class="btn btn-primary float-right" href="admin.html" role="button">Go To Admin</a>
-        <span  id="2"> Test</span>
-        <input  id="1" type="text" value="your input here" onclick="alert('Hello')"/>
-        <button  id="3"type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-              Launch static backdrop modal
-        </button>
-        <span id='test1' class="d-inline-block" data-toggle="popover" data-content="Disabled popover">
-          <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Disabled button</button>
-        </span>
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+    </style>
+
+    <body ng-app='dynamicUserAssist' ng-controller="clientRenderCtrl">
+      <div class="container-fluid pt-3">
+          <a class="btn btn-primary float-right" href="admin.html" role="button">Go To Admin</a>
+          <div class="container mt-3 pt-3">
+            
+
+            	<div class="row justify-content-center">
+                  <div class="col-12 col-md-10 col-lg-8">
+                      <form class="form-inline card card-sm">
+                          <div class="card-body row no-gutters align-items-center">
+                              
+                              <!--end of col-->
+                              <div class="col">
+                                  <input id="1" class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords">
+                              </div>
+                              <!--end of col-->
+                              <div class="col-auto">
+                                  <button class="btn btn-lg btn-success" type="submit">Search</button>
+                              </div>
+                              <!--end of col-->
+                          </div>
+                      </form>
+                  </div>
+                  <!--end of col-->
+              </div>
+
+
+         
+            </div>
+      
       </div>
 
+      
       
       
       </body>   

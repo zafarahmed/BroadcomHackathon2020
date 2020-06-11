@@ -20,33 +20,31 @@ var videoTemplate = '<div class="modal fade" id="{{ID}}" data-backdrop="static" 
   +'</div>'
   +'</div>'
   +'</div>'
+app.controller("clientRenderCtrl", function( $scope, commonService){
+    var contentArr = commonService.getContent();
+
+    for(var i = 0; i<contentArr.length; i++){
+        var content = contentArr[i];
+        var icon = "";
+        var template = "";
+        if( content.type.toLowerCase() === 'video' ){
+             icon = videoIcon.replace("{{ID}}", "c-v"+content.elementId);
+             template = videoTemplate.replace("{{ID}}", "c-v"+content.elementId).replace("{{URL}}", content.content).replace("{{TITLE}}", content.title);
+        }
+        var html = $("#"+content.elementId)[0].outerHTML;
+        $("#"+contentArr[i].elementId).replaceWith( icon + html);
+        $('body').append(template);
+    
+    }
+
+    $('#exampleModal').on('hidden.bs.modal', function() {
+        var $this = $(this).find('iframe'),
+          tempSrc = $this.attr('src');
+        $this.attr('src', "");
+        $this.attr('src', tempSrc);
+      });
+});
 
 $( window ).on( "load", function() { 
-    var contentArr = [
-                {elementId:"1", type:"video", content:"https://www.youtube.com/embed/WhbYBb0huMs"}
-                // ,
-                // {elementId:"2", type:"video", content:''},
-                // {elementId:"3", type:"video", content:''}
-            ];
-
-            for(var i = 0; i<contentArr.length; i++){
-                var content = contentArr[i];
-                var icon = "";
-                var template = "";
-                if( content.type.toLowerCase() === 'video' ){
-                     icon = videoIcon.replace("{{ID}}", "c-v"+content.elementId);
-                     template = videoTemplate.replace("{{ID}}", "c-v"+content.elementId).replace("{{URL}}", content.content).replace("{{TITLE}}", content.title);
-                }
-                var html = $("#"+content.elementId)[0].outerHTML;
-                $("#"+contentArr[i].elementId).replaceWith( icon + html);
-                $('body').append(template);
-            
-            }
-
-            $('#exampleModal').on('hidden.bs.modal', function() {
-                var $this = $(this).find('iframe'),
-                  tempSrc = $this.attr('src');
-                $this.attr('src', "");
-                $this.attr('src', tempSrc);
-              });
+    
  });

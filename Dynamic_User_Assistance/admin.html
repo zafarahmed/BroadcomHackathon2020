@@ -1,3 +1,5 @@
+
+
 <html>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -7,24 +9,189 @@
     
         <script src="https://use.fontawesome.com/b702a4904b.js"></script>
      <script src="app.js"></script>
-    <!-- <script>
+     <script src="commonService.js"></script>
+    <script src="adminRendererCtrl.js"></script>
+    <script>
        $(function () {
   $('[data-toggle="tooltip"]').tooltip();
   $('#defaultPop').tooltip('show') ;
+  $('.toast').toast({autohide:true,delay:2000,animation:true});
+  
 })
 $(function () {
-  $('[data-toggle="popover"]').popover();
-  $('#test1').popover('show') .off('click');
+  
+ 
+ 
+	
+$('#dcc1').popover({placement:"top",html: true, 
+	sanitize: false});
+	
+	//$('#dcc1').popover('show');
+	
+	//$('#dcc').popover({placement:"top",html: true, 
+	//content: function () {
+   //     var content = $(this).attr("data-popover-content");
+   //     return $(content).find(".popover-body").clone();
+   // }});
+
 })
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+} 
 
 
+    </script>
+    <style>
+    .widget-button {
+ 
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 38px;
+  width: 280px;
+}
 
-    </script> -->
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
 
-    <body ng-app='dynamicUserAssist'>
-      <div class="container pt-3">
-          <a class="btn btn-warning float-left" href="index.html" role="button">Go To End User</a>
-      </div>
-         
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .widget-button:hover {
+  opacity: 1;
+}
+    
+    </style>
+
+    <body ng-app='dynamicUserAssist' ng-controller="adminRenderCtrl" >
+        <div class="container-fluid pt-3">
+                <a class="btn btn-warning float-right" href="index.html" role="button">Go To End User</a>
+                <div class="container mt-3 pt-3">
+                   
+                        <div class="row justify-content-center">
+                                <div class="col-12 col-md-10 col-lg-8">
+                                    <form class="form-inline card card-sm">
+                                        <div class="card-body row no-gutters align-items-center">
+                                            
+                                            <!--end of col-->
+                                            <div class="col">
+                                                <input id="1" class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords">
+                                            </div>
+                                            <!--end of col-->
+                                            <div class="col-auto">
+                                                <button class="btn btn-lg btn-success" type="submit">Search</button>
+                                            </div>
+                                            <!--end of col-->
+                                        </div>
+                                    </form>
+                                </div>
+                                <!--end of col-->
+                            </div>
+                    </div>
+        </div>
+            
+        
+						
+			<!-- toast -->			
+			<div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
+              <div class="toast" style="position: absolute; top: 0; right: 0;width: 300px;">
+                 <div class="toast-header">
+                   <strong class="mr-auto">Success</strong>
+                   <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                   </button>
+                 </div>
+                 <div class="toast-body">
+                  Data saved successfully.
+                </div>
+              </div>
+            </div>
+		
+			
+		
+            
+            <i class="fa fa-cogs fa-2x widget-button" onclick="openForm()"></i>
+            <div class="chat-popup" id="myForm">
+                    <form class="form-container">
+                      <h5> Dynamic Content Controller &nbsp;<i class="fa fa-times widget-button" onclick="closeForm()"></i></h5>
+                  
+                      <div class='form-group row'>
+                          <label for='staticEmail' class='col-sm-5 col-form-label'>Content Id</label>
+                          <div class='col-sm-7'>
+                           <input type='text' readonly class='form-control-plaintext' name='contentId' id='contentId'  value=''>
+                           </div>
+                            </div>
+                           <div class='form-group'>
+                           <label for='exampleFormControlSelect1'>Content Type</label>
+                           <select class='form-control' id='contentType'>
+                            <option>text</option>
+                            <option>video</option>
+                           <option>doc</option>
+                            </select>
+                            </div>
+                           <div class='form-group'>
+                           <label for='exampleFormControlTextarea1'>Content</label>
+                            <textarea class='form-control' id='contentVal' rows='3'></textarea> 
+                           </div>
+                  
+                      <button type="submit" class="btn btn-success" ng-click="contentDataController()">submit</button>
+                    </form>
+                  </div> 
+			
+			<!--Dynamic Content Controller -->
+						
     </body>   
+
 </html>
